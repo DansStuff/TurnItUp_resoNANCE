@@ -14,6 +14,5 @@ export enum EntityNames {
   Bar6_glb = "Bar6.glb",
   Bar7_glb = "Bar7.glb",
   Bar8_glb = "Bar8.glb",
-  leftVis = "leftVis",
-  resonANCE_glb = "resonANCE.glb",
+  DanceFloor_glb = "DanceFloor.glb",
 } 
