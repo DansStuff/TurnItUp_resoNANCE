@@ -111,174 +111,6 @@
             "parent": 0
           }
         },
-        "513": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 23.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "514": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 21.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "515": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 19.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "516": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 17.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "517": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 15.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "518": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 13.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "519": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 11.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
-        "520": {
-          "json": {
-            "position": {
-              "x": 26.5,
-              "y": 1.3200000524520874,
-              "z": 9.76449203491211
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0,
-              "w": 1
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            },
-            "parent": 0
-          }
-        },
         "527": {
           "json": {
             "position": {
@@ -299,6 +131,388 @@
             },
             "parent": 0
           }
+        },
+        "530": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 23.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "531": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 21.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "532": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 19.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "533": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 17.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "534": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 15.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "535": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 13.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "536": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 11.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "537": {
+          "json": {
+            "position": {
+              "x": 26.25,
+              "y": 1.25,
+              "z": 9.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "539": {
+          "json": {
+            "position": {
+              "x": 16,
+              "y": 4.5,
+              "z": 27.6299991607666
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": -0.08720000088214874,
+              "w": 0.9962000250816345
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "540": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 23.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "541": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 21.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "542": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 19.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "543": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 17.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "544": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 15.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "545": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 13.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "546": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 11.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "547": {
+          "json": {
+            "position": {
+              "x": 5,
+              "y": 1.25,
+              "z": 9.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "core::Animator",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "serializationType": "protocol-buffer",
+        "protocolBuffer": "PBAnimator"
+      },
+      "data": {
+        "527": {
+          "json": {
+            "states": [
+              {
+                "clip": "Pigeon1",
+                "playing": false,
+                "weight": 1,
+                "speed": 1,
+                "loop": false,
+                "shouldReset": false
+              }
+            ]
+          }
         }
       }
     },
@@ -311,65 +525,128 @@
         "protocolBuffer": "PBGltfContainer"
       },
       "data": {
-        "513": {
+        "527": {
+          "json": {
+            "src": "assets/scene/Models/DanceFloor.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "530": {
           "json": {
             "src": "assets/scene/Models/Bar1.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "514": {
+        "531": {
           "json": {
             "src": "assets/scene/Models/Bar2.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "515": {
+        "532": {
           "json": {
             "src": "assets/scene/Models/Bar3.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "516": {
+        "533": {
           "json": {
             "src": "assets/scene/Models/Bar4.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "517": {
+        "534": {
           "json": {
             "src": "assets/scene/Models/Bar5.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "518": {
+        "535": {
           "json": {
             "src": "assets/scene/Models/Bar6.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "519": {
+        "536": {
           "json": {
             "src": "assets/scene/Models/Bar7.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "520": {
+        "537": {
           "json": {
             "src": "assets/scene/Models/Bar8.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
         },
-        "527": {
+        "539": {
           "json": {
-            "src": "assets/scene/Models/DanceFloor.glb",
+            "src": "assets/scene/Models/Needle.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "540": {
+          "json": {
+            "src": "assets/scene/Models/Bar1.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "541": {
+          "json": {
+            "src": "assets/scene/Models/Bar2.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "542": {
+          "json": {
+            "src": "assets/scene/Models/Bar3.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "543": {
+          "json": {
+            "src": "assets/scene/Models/Bar4.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "544": {
+          "json": {
+            "src": "assets/scene/Models/Bar5.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "545": {
+          "json": {
+            "src": "assets/scene/Models/Bar6.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "546": {
+          "json": {
+            "src": "assets/scene/Models/Bar7.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "547": {
+          "json": {
+            "src": "assets/scene/Models/Bar8.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
           }
@@ -394,49 +671,94 @@
             "value": "AudioLocation"
           }
         },
-        "513": {
+        "527": {
+          "json": {
+            "value": "DanceFloor.glb"
+          }
+        },
+        "530": {
           "json": {
             "value": "Bar1.glb"
           }
         },
-        "514": {
+        "531": {
           "json": {
             "value": "Bar2.glb"
           }
         },
-        "515": {
+        "532": {
           "json": {
             "value": "Bar3.glb"
           }
         },
-        "516": {
+        "533": {
           "json": {
             "value": "Bar4.glb"
           }
         },
-        "517": {
+        "534": {
           "json": {
             "value": "Bar5.glb"
           }
         },
-        "518": {
+        "535": {
           "json": {
             "value": "Bar6.glb"
           }
         },
-        "519": {
+        "536": {
           "json": {
             "value": "Bar7.glb"
           }
         },
-        "520": {
+        "537": {
           "json": {
             "value": "Bar8.glb"
           }
         },
-        "527": {
+        "539": {
           "json": {
-            "value": "DanceFloor.glb"
+            "value": "Needle.glb"
+          }
+        },
+        "540": {
+          "json": {
+            "value": "Bar1.glb_2"
+          }
+        },
+        "541": {
+          "json": {
+            "value": "Bar2.glb_2"
+          }
+        },
+        "542": {
+          "json": {
+            "value": "Bar3.glb_2"
+          }
+        },
+        "543": {
+          "json": {
+            "value": "Bar4.glb_2"
+          }
+        },
+        "544": {
+          "json": {
+            "value": "Bar5.glb_2"
+          }
+        },
+        "545": {
+          "json": {
+            "value": "Bar6.glb_2"
+          }
+        },
+        "546": {
+          "json": {
+            "value": "Bar7.glb_2"
+          }
+        },
+        "547": {
+          "json": {
+            "value": "Bar8.glb_2"
           }
         }
       }
@@ -483,42 +805,7 @@
         "serializationType": "map"
       },
       "data": {
-        "513": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "514": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "515": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "516": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "517": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "518": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "519": {
-          "json": {
-            "gizmo": 1
-          }
-        },
-        "520": {
+        "539": {
           "json": {
             "gizmo": 1
           }
@@ -573,14 +860,23 @@
                 "children": [
                   512,
                   527,
-                  513,
-                  514,
-                  515,
-                  516,
-                  517,
-                  518,
-                  519,
-                  520
+                  530,
+                  531,
+                  532,
+                  533,
+                  534,
+                  535,
+                  536,
+                  537,
+                  539,
+                  540,
+                  541,
+                  542,
+                  543,
+                  544,
+                  545,
+                  546,
+                  547
                 ]
               },
               {
@@ -600,35 +896,71 @@
                 "children": []
               },
               {
-                "entity": 513,
+                "entity": 530,
                 "children": []
               },
               {
-                "entity": 514,
+                "entity": 531,
                 "children": []
               },
               {
-                "entity": 515,
+                "entity": 532,
                 "children": []
               },
               {
-                "entity": 516,
+                "entity": 533,
                 "children": []
               },
               {
-                "entity": 517,
+                "entity": 534,
                 "children": []
               },
               {
-                "entity": 518,
+                "entity": 535,
                 "children": []
               },
               {
-                "entity": 519,
+                "entity": 536,
                 "children": []
               },
               {
-                "entity": 520,
+                "entity": 537,
+                "children": []
+              },
+              {
+                "entity": 539,
+                "children": []
+              },
+              {
+                "entity": 540,
+                "children": []
+              },
+              {
+                "entity": 541,
+                "children": []
+              },
+              {
+                "entity": 542,
+                "children": []
+              },
+              {
+                "entity": 543,
+                "children": []
+              },
+              {
+                "entity": 544,
+                "children": []
+              },
+              {
+                "entity": 545,
+                "children": []
+              },
+              {
+                "entity": 546,
+                "children": []
+              },
+              {
+                "entity": 547,
                 "children": []
               }
             ]
@@ -656,31 +988,58 @@
         "512": {
           "json": {}
         },
-        "513": {
-          "json": {}
-        },
-        "514": {
-          "json": {}
-        },
-        "515": {
-          "json": {}
-        },
-        "516": {
-          "json": {}
-        },
-        "517": {
-          "json": {}
-        },
-        "518": {
-          "json": {}
-        },
-        "519": {
-          "json": {}
-        },
-        "520": {
-          "json": {}
-        },
         "527": {
+          "json": {}
+        },
+        "530": {
+          "json": {}
+        },
+        "531": {
+          "json": {}
+        },
+        "532": {
+          "json": {}
+        },
+        "533": {
+          "json": {}
+        },
+        "534": {
+          "json": {}
+        },
+        "535": {
+          "json": {}
+        },
+        "536": {
+          "json": {}
+        },
+        "537": {
+          "json": {}
+        },
+        "539": {
+          "json": {}
+        },
+        "540": {
+          "json": {}
+        },
+        "541": {
+          "json": {}
+        },
+        "542": {
+          "json": {}
+        },
+        "543": {
+          "json": {}
+        },
+        "544": {
+          "json": {}
+        },
+        "545": {
+          "json": {}
+        },
+        "546": {
+          "json": {}
+        },
+        "547": {
           "json": {}
         }
       }
