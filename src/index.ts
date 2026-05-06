@@ -44,7 +44,9 @@ export function main() {
   
   const hypeMeterEntity = engine.addEntity()
   HypeMeter.create(hypeMeterEntity, {
-    hype: 0
+    hype: 0,
+    lastThreshold: 0,
+    currentThreshold: 0
   })
 
   const audioEntity = engine.addEntity()
@@ -54,7 +56,7 @@ export function main() {
     loop: true
   })
   AudioAnalysis.createAudioAnalysis(audioEntity)
-  Transform.create(audioEntity, { position: Vector3.create(12, 0, 12) })
+  Transform.create(audioEntity, { position: Vector3.create(16, 0, 16) })
 
   for (let n = 1; n <= BANDS; n++) {
     const barEntity = engine.getEntityOrNullByName(`Bar${n}.glb`)
@@ -104,7 +106,7 @@ export function main() {
   })
 
   // Bands animation
-  engine.addSystem(animateVisualizer(currentAnalysis, BARS_HEIGHT, counterEntity))
+  engine.addSystem(animateVisualizer(currentAnalysis, counterEntity, hypeMeterEntity))
   // Keep audio source on top of the local player
   engine.addSystem(positionAudio(audioEntity))
   

@@ -19,7 +19,9 @@ export const DancerCounter = engine.defineComponent('DancerCounter', {count : Sc
 
 export const HypeMeter = engine.defineComponent('HypeMeter', {
     hype : Schemas.Float,
-    thresholdPassed : Schemas.Boolean
+    thresholdPassed : Schemas.Boolean,
+    lastThreshold : Schemas.Int,
+    currentThreshold : Schemas.Int
 })
 
 export const ExtraAudioData = engine.defineComponent('ExtraAudioData', {

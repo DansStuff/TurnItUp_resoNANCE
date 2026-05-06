@@ -4,18 +4,19 @@ import { VisualBar, Emoting, DancerCounter, HypeMeter } from './components'
 import { Constants } from './data'
 
 // Bands animation
-export function animateVisualizer(currentAnalysis: AudioAnalysisView, barsHeight: number, dancerCounterEntity : Entity) {
+export function animateVisualizer(currentAnalysis: AudioAnalysisView, dancerCounterEntity : Entity, hypeMeterEntity : Entity) {
   return () => {
     const entities = engine.getEntitiesWith(VisualBar, Transform)
     
     for (const [entity] of entities) {
         const mutableTransform = Transform.getMutable(entity)
         const readonlyCounter = DancerCounter.get(dancerCounterEntity)
+        const readonlyHypeMeter = HypeMeter.get(hypeMeterEntity)
 
         const index = VisualBar.get(entity).index
 
         const current = Vector3.One()
-        current.y = (currentAnalysis.bands[index] * barsHeight * readonlyCounter.count) + 0.1
+        current.y = (currentAnalysis.bands[index] * Constants.BarsHeight * readonlyHypeMeter.hype) + 0.1
         mutableTransform.scale = current
     }
   }
@@ -51,11 +52,17 @@ export function trackHype(hypeMeterEntity : Entity, dancerCounterEntity : Entity
         const hypeMeter = HypeMeter.getMutable(hypeMeterEntity)
         const dancerCounter = DancerCounter.get(dancerCounterEntity) 
         
+        hypeMeter.lastThreshold = hypeMeter.currentThreshold
+
         var hypeAccel = dancerCounter.count * Constants.HypeAccelPerDancer
-        var maxHype = dancerCounter.count * Constants.MaxHypePerDancer
+        //var maxHype = dancerCounter.count * Constants.MaxHypePerDancer
+        var maxHype = dancerCounter.count * 1
+        
         if(maxHype > 1){
             maxHype = 1
         }
+
+        
 
         if(hypeMeter.hype > maxHype){
             hypeMeter.hype -= Constants.HypeDecay * dt
@@ -65,6 +72,13 @@ export function trackHype(hypeMeterEntity : Entity, dancerCounterEntity : Entity
         if(hypeMeter.hype > 1){hypeMeter.hype = 1}
         if(hypeMeter.hype < 0){hypeMeter.hype = 0}
             
+        hypeMeter.currentThreshold = Math.floor(hypeMeter.hype / Constants.MaxHypePerDancer)
+   
+        
+        if(hypeMeter.currentThreshold != hypeMeter.lastThreshold){
+            console.log("hype threshold crossed", hypeMeter.lastThreshold, " -> ", hypeMeter.currentThreshold)
+        }
+
     }
         
 }
