@@ -21,7 +21,10 @@ export const HypeMeter = engine.defineComponent('HypeMeter', {
     hype : Schemas.Float,
     thresholdPassed : Schemas.Boolean,
     lastThreshold : Schemas.Int,
-    currentThreshold : Schemas.Int
+    currentThreshold : Schemas.Int,
+    /** Which layer is routed to the speakers (volume); entity is one of the hype track sources. */
+    activeAudioEntity: Schemas.Entity,
+    audioPlaying: Schemas.Boolean,
 })
 
 export const ExtraAudioData = engine.defineComponent('ExtraAudioData', {

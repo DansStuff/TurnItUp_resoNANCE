@@ -1,22 +1,30 @@
 import { Quaternion, Vector3 } from '@dcl/sdk/math'
-import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction, PointerEventType } from '@dcl/sdk/ecs'
+import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction, PointerEventType, AudioSource } from '@dcl/sdk/ecs'
 import { VisualBar, Emoting, DancerCounter, HypeMeter } from './components'
 import { Constants } from './data'
+
+export type AudioSlot = { entity: Entity }
 
 // Bands animation
 export function animateVisualizer(currentAnalysis: AudioAnalysisView, dancerCounterEntity : Entity, hypeMeterEntity : Entity) {
   return () => {
+    
     const entities = engine.getEntitiesWith(VisualBar, Transform)
     
+    const readonlyHypeMeter = HypeMeter.get(hypeMeterEntity)
     for (const [entity] of entities) {
         const mutableTransform = Transform.getMutable(entity)
-        const readonlyCounter = DancerCounter.get(dancerCounterEntity)
-        const readonlyHypeMeter = HypeMeter.get(hypeMeterEntity)
 
         const index = VisualBar.get(entity).index
 
+        const rawHype = readonlyHypeMeter.hype
+        const vizHype =
+          readonlyHypeMeter.currentThreshold > 0
+            ? Math.max(rawHype, 1.0 / Constants.NumTracks)
+            : rawHype
+
         const current = Vector3.One()
-        current.y = (currentAnalysis.bands[index] * Constants.BarsHeight * readonlyHypeMeter.hype) + 0.1
+        current.y = currentAnalysis.bands[index] * Constants.BarsHeight * vizHype + 0.1
         mutableTransform.scale = current
     }
   }
@@ -30,63 +38,80 @@ export function animateNeedle(hypeMeterEntity : Entity, needleEntity : Entity) {
     }
 }
 
-export function positionAudio(audioEntity: Entity) {
-    return () => {
-        const playerTransform = Transform.getOrNull(engine.PlayerEntity)
-        if (!playerTransform) return
-
-        const audioTransform = Transform.getMutable(audioEntity)
-        audioTransform.position = Vector3.create(
-            playerTransform.position.x,
-            playerTransform.position.y,
-            playerTransform.position.z
-        )
-    }
+function clampSlotIndex(idx: number, slotsLength: number) {
+    if (slotsLength <= 0) return 0
+    if (idx < 0) return 0
+    if (idx >= slotsLength) return slotsLength - 1
+    return idx
 }
 
-export function trackHype(hypeMeterEntity : Entity, dancerCounterEntity : Entity){
-    
+export function trackHype(
+    hypeMeterEntity: Entity,
+    dancerCounterEntity: Entity,
+    audioSlots: AudioSlot[],
+    currentAnalysis: AudioAnalysisView
+) {
     //max hype between 0 and 1, used to multiply other systems
-    
     return (dt: number) => {
         const hypeMeter = HypeMeter.getMutable(hypeMeterEntity)
         const dancerCounter = DancerCounter.get(dancerCounterEntity) 
         
         hypeMeter.lastThreshold = hypeMeter.currentThreshold
 
+        //modify current hype level based on current number of dancers
         var hypeAccel = dancerCounter.count * Constants.HypeAccelPerDancer
-        //var maxHype = dancerCounter.count * Constants.MaxHypePerDancer
         var maxHype = dancerCounter.count * 1
-        
         if(maxHype > 1){
             maxHype = 1
         }
-
-        
-
         if(hypeMeter.hype > maxHype){
             hypeMeter.hype -= Constants.HypeDecay * dt
         }else{
             hypeMeter.hype += hypeAccel * dt
         }
         if(hypeMeter.hype > 1){hypeMeter.hype = 1}
-        if(hypeMeter.hype < 0){hypeMeter.hype = 0}
-            
-        hypeMeter.currentThreshold = Math.floor(hypeMeter.hype / Constants.MaxHypePerDancer)
-   
-        
-        if(hypeMeter.currentThreshold != hypeMeter.lastThreshold){
-            console.log("hype threshold crossed", hypeMeter.lastThreshold, " -> ", hypeMeter.currentThreshold)
+        if(hypeMeter.hype < 0){hypeMeter.hype = 0}   
+        hypeMeter.currentThreshold = Math.floor(hypeMeter.hype / (1.0 / Constants.NumTracks))
+        if(hypeMeter.hype > 0){
+            hypeMeter.currentThreshold += 1
         }
 
-    }
-        
-}
+        //react to changes in current hype level
+        if(hypeMeter.currentThreshold != hypeMeter.lastThreshold){
+            console.log("hype threshold crossed", hypeMeter.lastThreshold, " -> ", hypeMeter.currentThreshold)
 
-export function processAudioStream(audioEntity : Entity, currentAnalysis : AudioAnalysisView){
-    return () => {
-        AudioAnalysis.readIntoView(audioEntity, currentAnalysis)
-        //todo: perform secondary analysis here (bass edge detection etc.)
+            hypeMeter.audioPlaying = true
+
+            //if everything should jsut be silent
+            if(hypeMeter.currentThreshold == 0){
+
+                hypeMeter.audioPlaying = false
+
+            //otherwise a hype layer is playing (`audioSlots[0]` is a bootstrap slot, never audible)
+            }else{
+
+                hypeMeter.activeAudioEntity = audioSlots[clampSlotIndex(hypeMeter.currentThreshold, audioSlots.length)].entity
+
+            }
+            if(hypeMeter.audioPlaying){
+                const active = hypeMeter.activeAudioEntity
+                audioSlots.forEach(element => {
+                    if(element.entity === active){
+                        AudioSource.getMutable(element.entity).volume = 1 //todo: modulate by hype level a bit?
+                    }else{
+                        AudioSource.getMutable(element.entity).volume = 0
+                    }
+                })
+            }else{
+                audioSlots.forEach(element => {
+                    AudioSource.getMutable(element.entity).volume = 0
+                })
+            }
+        }
+        
+        if(hypeMeter.audioPlaying){
+            AudioAnalysis.readIntoView(hypeMeter.activeAudioEntity, currentAnalysis)
+        }
     }
 }
 
