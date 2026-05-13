@@ -1,6 +1,6 @@
 import { Quaternion, Vector3 } from '@dcl/sdk/math'
 import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction, PointerEventType, AudioSource } from '@dcl/sdk/ecs'
-import { VisualBar, Emoting, DancerCounter, HypeMeter } from './components'
+import { VisualBar, Emoting, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
 
 export type AudioSlot = { entity: Entity }
@@ -24,11 +24,44 @@ export function animateVisualizer(currentAnalysis: AudioAnalysisView, dancerCoun
             : rawHype
 
         const current = Vector3.One()
-        current.y = currentAnalysis.bands[index] * Constants.BarsHeight * vizHype + 0.1
+        current.y = 0.1
+        if(!isNaN(currentAnalysis.bands[index])){
+            current.y = currentAnalysis.bands[index] * Constants.BarsHeight * vizHype + 0.1
+        }
         mutableTransform.scale = current
     }
   }
 }
+
+export function animateWoofers(currentAnalysis: AudioAnalysisView){
+    return () => {
+        const entities = engine.getEntitiesWith(Woofer, Transform)
+        for(const [entity] of entities){
+            const mutableTransform = Transform.getMutable(entity)
+            let current = Vector3.One()
+            if (!isNaN(currentAnalysis.bands[2])) {
+                current.z *= 1.0 + (currentAnalysis.bands[0] * 2)
+            }
+       
+            mutableTransform.scale = current
+        }
+    }
+}
+
+export function animateTweeters(currentAnalysis: AudioAnalysisView){
+    return () => {
+        const entities = engine.getEntitiesWith(Tweeter, Transform)
+        for(const [entity] of entities){
+            const mutableTransform = Transform.getMutable(entity)
+            let current = Vector3.One()
+            if (!isNaN(currentAnalysis.bands[6])) {
+                current.z *= 1.0 + (currentAnalysis.bands[6] * 5)
+            }
+            mutableTransform.scale = current
+        }
+    }
+}
+
 
 export function animateNeedle(hypeMeterEntity : Entity, needleEntity : Entity) {
     return () => {

@@ -58,7 +58,9 @@
     "nearbyVoiceChat": "enabled"
   },
   "creator": "",
-  "skyboxConfig": {},
+  "skyboxConfig": {
+    "fixedTime": 80880
+  },
   "source": {
     "origin": "creator-hub",
     "projectId": "58dd9d78-9bf3-4315-a551-092235d0f1db"

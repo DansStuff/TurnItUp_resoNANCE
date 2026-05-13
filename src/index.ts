@@ -18,9 +18,9 @@ import {
   Vector3
 } from '@dcl/sdk/math'
 
-import { Emoting, VisualBar, DancerCounter, HypeMeter } from './components'
+import { Emoting, VisualBar, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
-import { animateVisualizer, cancelEmotes, animateNeedle, trackHype, AudioSlot } from './systems'
+import { animateVisualizer, cancelEmotes, animateNeedle, trackHype, AudioSlot, animateWoofers, animateTweeters } from './systems'
 
 const BANDS: number = 8
 
@@ -109,6 +109,16 @@ export function main() {
 
   const needleEntity = engine.getEntityOrNullByName('Needle.glb')
 
+  const woofers = engine.getEntitiesByTag('Woofer')
+  for (const wooferEntity of woofers) {
+    Woofer.create(wooferEntity, {})
+  }
+
+  const tweeters = engine.getEntitiesByTag('Tweeter')
+  for (const tweeterEntity of tweeters) {
+    Tweeter.create(tweeterEntity, {})
+  }
+
   // Listen for local-player emote commands and log looped ones.
   AvatarEmoteCommand.onChange(engine.PlayerEntity, (emoteCommand) => {
     if (!emoteCommand) {
@@ -148,6 +158,17 @@ export function main() {
     animateVisualizer(currentAnalysis, counterEntity, hypeMeterEntity),
     SYSTEM_PRIORITY_DEFAULT,
     'animateVisualizer'
+  )
+  engine.addSystem(
+    animateWoofers(currentAnalysis),
+    SYSTEM_PRIORITY_DEFAULT,
+    'animateWoofers'
+  )
+
+  engine.addSystem(
+    animateTweeters(currentAnalysis),
+    SYSTEM_PRIORITY_DEFAULT,
+    'animateTweeters'
   )
 
   if (needleEntity) {

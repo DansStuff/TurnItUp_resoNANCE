@@ -31,3 +31,6 @@ export const ExtraAudioData = engine.defineComponent('ExtraAudioData', {
     bassLevel : Schemas.Float,
     kickDetected : Schemas.Boolean
 })
+
+export const Woofer = engine.defineComponent('Woofer', {})
+export const Tweeter = engine.defineComponent('Tweeter', {})

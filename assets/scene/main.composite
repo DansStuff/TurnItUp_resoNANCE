@@ -111,6 +111,132 @@
             "parent": 0
           }
         },
+        "514": {
+          "json": {
+            "position": {
+              "x": 7.7532830238342285,
+              "y": 3.5,
+              "z": 25.43983268737793
+            },
+            "rotation": {
+              "x": 0,
+              "y": -0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "515": {
+          "json": {
+            "position": {
+              "x": 7.7532830238342285,
+              "y": 6.25,
+              "z": 25.379833221435547
+            },
+            "rotation": {
+              "x": 0,
+              "y": -0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "519": {
+          "json": {
+            "position": {
+              "x": 7.7532830238342285,
+              "y": 3,
+              "z": 26.299833297729492
+            },
+            "rotation": {
+              "x": 0,
+              "y": -0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "520": {
+          "json": {
+            "position": {
+              "x": 24.6200008392334,
+              "y": 3.5,
+              "z": 25.6299991607666
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "521": {
+          "json": {
+            "position": {
+              "x": 24.621244430541992,
+              "y": 6.25,
+              "z": 25.56532859802246
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "522": {
+          "json": {
+            "position": {
+              "x": 24.621244430541992,
+              "y": 3,
+              "z": 26.485328674316406
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0.06540312618017197,
+              "z": 0,
+              "w": 0.9978589415550232
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
         "527": {
           "json": {
             "position": {
@@ -525,6 +651,48 @@
         "protocolBuffer": "PBGltfContainer"
       },
       "data": {
+        "514": {
+          "json": {
+            "src": "assets/scene/Models/Woofer.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "515": {
+          "json": {
+            "src": "assets/scene/Models/Tweeter.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "519": {
+          "json": {
+            "src": "assets/scene/Models/Speaker.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "520": {
+          "json": {
+            "src": "assets/scene/Models/Woofer.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "521": {
+          "json": {
+            "src": "assets/scene/Models/Tweeter.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "522": {
+          "json": {
+            "src": "assets/scene/Models/Speaker.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 3
+          }
+        },
         "527": {
           "json": {
             "src": "assets/scene/Models/DanceFloor.glb",
@@ -671,6 +839,36 @@
             "value": "AudioLocation"
           }
         },
+        "514": {
+          "json": {
+            "value": "Woofer.glb"
+          }
+        },
+        "515": {
+          "json": {
+            "value": "Tweeter.glb"
+          }
+        },
+        "519": {
+          "json": {
+            "value": "Speaker.glb"
+          }
+        },
+        "520": {
+          "json": {
+            "value": "Woofer.glb_2"
+          }
+        },
+        "521": {
+          "json": {
+            "value": "Tweeter.glb_2"
+          }
+        },
+        "522": {
+          "json": {
+            "value": "Speaker.glb_2"
+          }
+        },
         "527": {
           "json": {
             "value": "DanceFloor.glb"
@@ -786,7 +984,37 @@
               "Tag Group 2",
               "Tag Group 3",
               "Tag Group 4",
-              "DancerTracker"
+              "DancerTracker",
+              "Woofer",
+              "Tweeter"
+            ]
+          }
+        },
+        "514": {
+          "json": {
+            "tags": [
+              "Woofer"
+            ]
+          }
+        },
+        "515": {
+          "json": {
+            "tags": [
+              "Tweeter"
+            ]
+          }
+        },
+        "520": {
+          "json": {
+            "tags": [
+              "Woofer"
+            ]
+          }
+        },
+        "521": {
+          "json": {
+            "tags": [
+              "Tweeter"
             ]
           }
         }
@@ -805,9 +1033,9 @@
         "serializationType": "map"
       },
       "data": {
-        "527": {
+        "520": {
           "json": {
-            "gizmo": 0
+            "gizmo": 1
           }
         }
       }
@@ -876,7 +1104,13 @@
                   544,
                   545,
                   546,
-                  547
+                  547,
+                  514,
+                  515,
+                  519,
+                  520,
+                  521,
+                  522
                 ]
               },
               {
@@ -962,6 +1196,30 @@
               {
                 "entity": 547,
                 "children": []
+              },
+              {
+                "entity": 514,
+                "children": []
+              },
+              {
+                "entity": 515,
+                "children": []
+              },
+              {
+                "entity": 519,
+                "children": []
+              },
+              {
+                "entity": 520,
+                "children": []
+              },
+              {
+                "entity": 521,
+                "children": []
+              },
+              {
+                "entity": 522,
+                "children": []
               }
             ]
           }
@@ -986,6 +1244,24 @@
       },
       "data": {
         "512": {
+          "json": {}
+        },
+        "514": {
+          "json": {}
+        },
+        "515": {
+          "json": {}
+        },
+        "519": {
+          "json": {}
+        },
+        "520": {
+          "json": {}
+        },
+        "521": {
+          "json": {}
+        },
+        "522": {
           "json": {}
         },
         "527": {
@@ -1445,7 +1721,9 @@
                 }
               }
             ],
-            "skyboxConfig": {},
+            "skyboxConfig": {
+              "fixedTime": 80880
+            },
             "creator": "",
             "disableNearbyVoiceChat": false
           }
