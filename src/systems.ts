@@ -2,6 +2,7 @@ import { Quaternion, Vector3 } from '@dcl/sdk/math'
 import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction, PointerEventType, AudioSource } from '@dcl/sdk/ecs'
 import { VisualBar, Emoting, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
+import type { HypeThresholdChangeContext, HypeThresholdChangeListener } from './listeners'
 
 export type AudioSlot = { entity: Entity }
 
@@ -82,7 +83,8 @@ export function trackHype(
     hypeMeterEntity: Entity,
     dancerCounterEntity: Entity,
     audioSlots: AudioSlot[],
-    currentAnalysis: AudioAnalysisView
+    currentAnalysis: AudioAnalysisView,
+    thresholdChangeListeners: readonly HypeThresholdChangeListener[]
 ) {
     //max hype between 0 and 1, used to multiply other systems
     return (dt: number) => {
@@ -111,7 +113,13 @@ export function trackHype(
 
         //react to changes in current hype level
         if(hypeMeter.currentThreshold != hypeMeter.lastThreshold){
-            console.log("hype threshold crossed", hypeMeter.lastThreshold, " -> ", hypeMeter.currentThreshold)
+            const thresholdCtx: HypeThresholdChangeContext = {
+                lastThreshold: hypeMeter.lastThreshold,
+                currentThreshold: hypeMeter.currentThreshold,
+            }
+            for (const listener of thresholdChangeListeners) {
+                listener(thresholdCtx)
+            }
 
             hypeMeter.audioPlaying = true
 
@@ -151,14 +159,15 @@ export function trackHype(
 export function cancelEmotes(dancerCounterEntity : Entity){
     return () => {
         if (Emoting.has(engine.PlayerEntity)) {
+            const jumped  = inputSystem.isPressed(InputAction.IA_JUMP)
             const moved =
-                inputSystem.isTriggered(InputAction.IA_JUMP, PointerEventType.PET_DOWN) ||
+                
                 inputSystem.isPressed(InputAction.IA_FORWARD) ||
                 inputSystem.isPressed(InputAction.IA_BACKWARD) ||
                 inputSystem.isPressed(InputAction.IA_LEFT) ||
                 inputSystem.isPressed(InputAction.IA_RIGHT)
 
-            if (moved) {
+            if (moved || jumped) {
                 const dancerCounter = DancerCounter.getMutable(dancerCounterEntity)
                 console.log('Local player moved/jumped, removing Emoting component')
                 Emoting.deleteFrom(engine.PlayerEntity)

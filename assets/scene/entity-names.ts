@@ -24,6 +24,7 @@ export enum EntityNames {
   Bar8_glb_2 = "Bar8.glb_2",
   DanceFloor_glb = "DanceFloor.glb",
   Needle_glb = "Needle.glb",
+  Pidgeon_01_glb = "Pidgeon_01.glb",
   Speaker_glb = "Speaker.glb",
   Speaker_glb_2 = "Speaker.glb_2",
   Tweeter_glb = "Tweeter.glb",

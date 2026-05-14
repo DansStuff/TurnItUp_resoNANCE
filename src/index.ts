@@ -20,7 +20,16 @@ import {
 
 import { Emoting, VisualBar, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
-import { animateVisualizer, cancelEmotes, animateNeedle, trackHype, AudioSlot, animateWoofers, animateTweeters } from './systems'
+import { createLogHypeThresholdChange } from './listeners'
+import {
+  animateVisualizer,
+  cancelEmotes,
+  animateNeedle,
+  trackHype,
+  AudioSlot,
+  animateWoofers,
+  animateTweeters,
+} from './systems'
 
 const BANDS: number = 8
 
@@ -140,6 +149,7 @@ export function main() {
       })
       const dancerCounter = DancerCounter.getMutable(counterEntity)
       dancerCounter.count += 1
+      console.log("DancerCounter: ", dancerCounter.count)
     }
 
     
@@ -150,7 +160,9 @@ export function main() {
 
   // `readIntoView` before bars: same default priority has undefined order in @dcl/ecs.
   engine.addSystem(
-    trackHype(hypeMeterEntity, counterEntity, audioSlots, currentAnalysis),
+    trackHype(hypeMeterEntity, counterEntity, audioSlots, currentAnalysis, [
+      createLogHypeThresholdChange(),
+    ]),
     SYSTEM_PRIORITY_DEFAULT + 1,
     'trackHype'
   )
