@@ -1,5 +1,5 @@
 import { Quaternion, Vector3 } from '@dcl/sdk/math'
-import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction, PointerEventType, AudioSource } from '@dcl/sdk/ecs'
+import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction } from '@dcl/sdk/ecs'
 import { VisualBar, Emoting, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
 import type { HypeThresholdChangeContext, HypeThresholdChangeListener } from './listeners'
@@ -72,17 +72,9 @@ export function animateNeedle(hypeMeterEntity : Entity, needleEntity : Entity) {
     }
 }
 
-function clampSlotIndex(idx: number, slotsLength: number) {
-    if (slotsLength <= 0) return 0
-    if (idx < 0) return 0
-    if (idx >= slotsLength) return slotsLength - 1
-    return idx
-}
-
 export function trackHype(
     hypeMeterEntity: Entity,
     dancerCounterEntity: Entity,
-    audioSlots: AudioSlot[],
     currentAnalysis: AudioAnalysisView,
     thresholdChangeListeners: readonly HypeThresholdChangeListener[]
 ) {
@@ -119,34 +111,6 @@ export function trackHype(
             }
             for (const listener of thresholdChangeListeners) {
                 listener(thresholdCtx)
-            }
-
-            hypeMeter.audioPlaying = true
-
-            //if everything should jsut be silent
-            if(hypeMeter.currentThreshold == 0){
-
-                hypeMeter.audioPlaying = false
-
-            //otherwise a hype layer is playing (`audioSlots[0]` is a bootstrap slot, never audible)
-            }else{
-
-                hypeMeter.activeAudioEntity = audioSlots[clampSlotIndex(hypeMeter.currentThreshold, audioSlots.length)].entity
-
-            }
-            if(hypeMeter.audioPlaying){
-                const active = hypeMeter.activeAudioEntity
-                audioSlots.forEach(element => {
-                    if(element.entity === active){
-                        AudioSource.getMutable(element.entity).volume = 1 //todo: modulate by hype level a bit?
-                    }else{
-                        AudioSource.getMutable(element.entity).volume = 0
-                    }
-                })
-            }else{
-                audioSlots.forEach(element => {
-                    AudioSource.getMutable(element.entity).volume = 0
-                })
             }
         }
         

@@ -20,7 +20,7 @@ import {
 
 import { Emoting, VisualBar, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
-import { createLogHypeThresholdChange } from './listeners'
+import { createLogHypeThresholdChange, createSongChangeHypeThresholdListener } from './listeners'
 import {
   animateVisualizer,
   cancelEmotes,
@@ -160,8 +160,9 @@ export function main() {
 
   // `readIntoView` before bars: same default priority has undefined order in @dcl/ecs.
   engine.addSystem(
-    trackHype(hypeMeterEntity, counterEntity, audioSlots, currentAnalysis, [
+    trackHype(hypeMeterEntity, counterEntity, currentAnalysis, [
       createLogHypeThresholdChange(),
+      createSongChangeHypeThresholdListener(hypeMeterEntity, audioSlots),
     ]),
     SYSTEM_PRIORITY_DEFAULT + 1,
     'trackHype'
