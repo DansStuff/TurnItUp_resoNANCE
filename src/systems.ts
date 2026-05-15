@@ -1,8 +1,39 @@
-import { Quaternion, Vector3 } from '@dcl/sdk/math'
-import { AudioAnalysisView, engine, Transform, Entity, AudioAnalysis, inputSystem, InputAction } from '@dcl/sdk/ecs'
-import { VisualBar, Emoting, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
+import { 
+    Quaternion,
+    Vector3,
+    Color3 } from '@dcl/sdk/math'
+
+import {
+  AudioAnalysisView,
+  engine,
+  Transform,
+  Entity,
+  AudioAnalysis,
+  inputSystem,
+  InputAction,
+  PlayerIdentityData,
+  AvatarEmoteCommand,
+  LightSource,
+  Material
+} from '@dcl/sdk/ecs'
+
+import {
+  VisualBar,
+  Emoting,
+  DancerCounter,
+  HypeMeter,
+  Woofer,
+  Tweeter,
+  PlayerInitialized,
+  Spotlight
+} from './components'
+
 import { Constants } from './data'
-import type { HypeThresholdChangeContext, HypeThresholdChangeListener } from './listeners'
+
+import type {
+  HypeThresholdChangeContext,
+  HypeThresholdChangeListener,
+} from './listeners'
 
 export type AudioSlot = { entity: Entity }
 
@@ -68,7 +99,7 @@ export function animateNeedle(hypeMeterEntity : Entity, needleEntity : Entity) {
     return () => {
         const mutableTransform = Transform.getMutable(needleEntity)
         const hypeMeter = HypeMeter.get(hypeMeterEntity)
-        mutableTransform.rotation = Quaternion.fromAngleAxis(hypeMeter.hype * 175, Vector3.Backward())
+        mutableTransform.rotation = Quaternion.fromAngleAxis(hypeMeter.hype * 162, Vector3.Backward())
     }
 }
 
@@ -120,8 +151,131 @@ export function trackHype(
     }
 }
 
+export function managePlayerState(counterEntity : Entity) {
+    return () => {
+        for (const [entity] of engine.getEntitiesWith(PlayerIdentityData)) {
+            if (PlayerInitialized.has(entity)) continue
+
+            // Create spotlight
+            const lightEntity = engine.addEntity()
+            Transform.create(lightEntity, {
+                position: Vector3.create(16, 5, 16),
+                rotation: Quaternion.fromEulerDegrees(90, 0, 0)
+            })
+            LightSource.create(lightEntity, {
+                type: LightSource.Type.Spot({
+                    innerAngle: 25,
+                    outerAngle: 90,
+                }),
+                color: Color3.White(),
+                intensity: Constants.SpotlightIntensityMin,
+                range: 20,
+                active: true,
+                //shadowMaskTexture: Material.Texture.Common({ src: 'assets/scene/images/mask1.png' })
+            })
+            Spotlight.create(entity, { lightEntity })
+
+            PlayerInitialized.create(entity)
+
+
+            // Listen for emotes
+            AvatarEmoteCommand.onChange(entity, (emote) => {
+                if (!emote) return
+                //console.log('Player', entity, 'used emote:', emote.emoteUrn)
+
+
+
+                // TODO: react to emote (e.g. change spotlight color, intensity, etc.)
+
+                if (emote.loop && Spotlight.has(entity)) {
+                    //LightSource.getMutable(Spotlight.get(entity).lightEntity).active = true
+                    const lightTransform = Transform.getMutable(Spotlight.get(entity).lightEntity)
+                    const playerTransform = Transform.get(entity)
+                    lightTransform.position = Vector3.create(playerTransform.position.x, 5, playerTransform.position.z)
+               
+
+                }
+
+                if (emote.loop) {
+                    if (Emoting.has(entity)) {
+                        const mutable = Emoting.getMutable(entity)
+                        mutable.emoteUrn = emote.emoteUrn
+                        mutable.timestamp = emote.timestamp
+                    } else {
+                        Emoting.create(entity, {
+                            emoteUrn: emote.emoteUrn,
+                            timestamp: emote.timestamp
+                        })
+                        if(engine.PlayerEntity === entity){
+                            const dancerCounter = DancerCounter.getMutable(counterEntity)
+                            dancerCounter.count += 1
+                        }
+                        const pos = Transform.get(entity).position
+                        lastPlayerPositions.set(entity, Vector3.create(pos.x, pos.y, pos.z))
+                    }
+                    console.log('Player', entity, 'started looping emote:', emote.emoteUrn)
+                }
+            })
+
+        }
+
+        
+
+
+        // Clean up disconnected players
+        for (const [entity] of engine.getEntitiesWith(PlayerInitialized)) {
+            if (PlayerIdentityData.has(entity)) continue
+
+            console.log('Cleaning up disconnected player:', entity)
+            if (Spotlight.has(entity)) {
+                engine.removeEntity(Spotlight.get(entity).lightEntity)
+                Spotlight.deleteFrom(entity)
+            }
+            if (Emoting.has(entity)) Emoting.deleteFrom(entity)
+            PlayerInitialized.deleteFrom(entity)
+        }
+    }
+}
+function spotlightIntensityFromHype(hype: number): number {
+    const { SpotlightIntensityHypeMin, SpotlightIntensityHypeMax, SpotlightIntensityMin, SpotlightIntensityMax } = Constants
+    const t = Math.min(
+        1,
+        Math.max(0, (hype - SpotlightIntensityHypeMin) / (SpotlightIntensityHypeMax - SpotlightIntensityHypeMin))
+    )
+    return SpotlightIntensityMin + t * (SpotlightIntensityMax - SpotlightIntensityMin)
+}
+
+export function updateSpotlightIntensity(hypeMeterEntity: Entity) {
+    return () => {
+        const hype = HypeMeter.get(hypeMeterEntity).hype
+        const intensity = spotlightIntensityFromHype(hype)
+        
+        for (const [playerEntity] of engine.getEntitiesWith(Spotlight)) {
+            const { lightEntity } = Spotlight.get(playerEntity)
+            if (!LightSource.has(lightEntity)) continue
+            LightSource.getMutable(lightEntity).intensity = intensity
+        }
+    }
+}
+
+export function rotateSpotlights() {
+    return (dt: number) => {
+        const angleDeg = Constants.SpotlightRotationSpeed * dt
+        const deltaYaw = Quaternion.fromAngleAxis(angleDeg, Vector3.Up())
+        for (const [playerEntity] of engine.getEntitiesWith(Spotlight)) {
+            const { lightEntity } = Spotlight.get(playerEntity)
+            const mutableTransform = Transform.getMutable(lightEntity)
+            mutableTransform.rotation = Quaternion.multiply(deltaYaw, mutableTransform.rotation)
+        }
+    }
+}
+
+const lastPlayerPositions = new Map<Entity, Vector3>()
+const MOVE_THRESHOLD = 0.01
+
 export function cancelEmotes(dancerCounterEntity : Entity){
     return () => {
+        /*
         if (Emoting.has(engine.PlayerEntity)) {
             const jumped  = inputSystem.isPressed(InputAction.IA_JUMP)
             const moved =
@@ -136,12 +290,39 @@ export function cancelEmotes(dancerCounterEntity : Entity){
                 console.log('Local player moved/jumped, removing Emoting component')
                 Emoting.deleteFrom(engine.PlayerEntity)
                 dancerCounter.count -= 1
-                /*
+                
                 if (Spotlight.has(engine.PlayerEntity)) {
                     LightSource.getMutable(Spotlight.get(engine.PlayerEntity).lightEntity).active = false
                 }
-                */
+                
             }
+        }
+        */
+
+        for (const [entity] of engine.getEntitiesWith(PlayerIdentityData)) {
+
+            
+            if (!Emoting.has(entity)) continue
+
+            const pos = Transform.get(entity).position
+            const lastPos = lastPlayerPositions.get(entity)
+
+            if (lastPos) {
+                const dist = Vector3.distanceSquared(pos, lastPos)
+                if (dist > MOVE_THRESHOLD * MOVE_THRESHOLD) {
+                    console.log('Remote player', entity, 'moved, removing Emoting component')
+                    Emoting.deleteFrom(entity)
+                    if(entity === engine.PlayerEntity){
+                        const dancerCounter = DancerCounter.getMutable(dancerCounterEntity)
+                        dancerCounter.count -= 1
+                    }
+                }
+                
+            }
+
+            lastPlayerPositions.set(entity, Vector3.create(pos.x, pos.y, pos.z))
         }
     }
 }
+
+

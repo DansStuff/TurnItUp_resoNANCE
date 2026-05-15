@@ -20,7 +20,12 @@ import {
 
 import { Emoting, VisualBar, DancerCounter, HypeMeter, Woofer, Tweeter } from './components'
 import { Constants } from './data'
-import { createLogHypeThresholdChange, createSongChangeHypeThresholdListener } from './listeners'
+import {
+  createLogHypeThresholdChange,
+  createSongChangeHypeThresholdListener,
+  createHypeTierDirectionStingerListener,
+  createSpotlightChangeHypeThresholdListener,
+} from './listeners'
 import {
   animateVisualizer,
   cancelEmotes,
@@ -29,6 +34,9 @@ import {
   AudioSlot,
   animateWoofers,
   animateTweeters,
+  managePlayerState,
+  rotateSpotlights,
+  updateSpotlightIntensity,
 } from './systems'
 
 const BANDS: number = 8
@@ -60,6 +68,7 @@ export function main() {
   // One layer per `Constants.HypeTrackClipUrls` entry; all play muted until hype picks the audible layer.
   const audioSlots: AudioSlot[] = []
 
+  //todo: VVV this part is probably AI halluc with performance implications, re-eval if have time
   // Reserved slot 0: first scene AudioSource often never gets FFT; see docs/DCL-AudioAnalysis-first-source-zeros.md
   const audioAnalysisBootstrap = engine.addEntity()
   Transform.create(audioAnalysisBootstrap, { position: Vector3.create(0, 0, 0) })
@@ -128,6 +137,7 @@ export function main() {
     Tweeter.create(tweeterEntity, {})
   }
 
+  /*
   // Listen for local-player emote commands and log looped ones.
   AvatarEmoteCommand.onChange(engine.PlayerEntity, (emoteCommand) => {
     if (!emoteCommand) {
@@ -137,32 +147,34 @@ export function main() {
     if (!emoteCommand.loop) return
     
     if (Emoting.has(engine.PlayerEntity)) {
-      console.log(`[Emote] Local player updated looped emote: ${emoteCommand.emoteUrn}`)
+      //console.log(`[Emote] Local player updated looped emote: ${emoteCommand.emoteUrn}`)
       const mutable = Emoting.getMutable(engine.PlayerEntity)
       mutable.emoteUrn = emoteCommand.emoteUrn
       mutable.timestamp = emoteCommand.timestamp
     } else {
-      console.log(`[Emote] Local player started looped emote: ${emoteCommand.emoteUrn}`)
+      //console.log(`[Emote] Local player started looped emote: ${emoteCommand.emoteUrn}`)
       Emoting.create(engine.PlayerEntity, {
         emoteUrn: emoteCommand.emoteUrn,
         timestamp: emoteCommand.timestamp
       })
       const dancerCounter = DancerCounter.getMutable(counterEntity)
       dancerCounter.count += 1
-      console.log("DancerCounter: ", dancerCounter.count)
+      //console.log("DancerCounter: ", dancerCounter.count)
     }
-
-    
   })
+  */
+  
 
   //there is no way to listen for emote stopping or cancelation so need to poll for it, this likely misses a bunch of corner cases
   engine.addSystem(cancelEmotes(counterEntity))
 
-  // `readIntoView` before bars: same default priority has undefined order in @dcl/ecs.
+  // `readIntoView` before bars: @dcl/ecs runs higher numeric priority first (`b.priority - a.priority`).
   engine.addSystem(
     trackHype(hypeMeterEntity, counterEntity, currentAnalysis, [
       createLogHypeThresholdChange(),
       createSongChangeHypeThresholdListener(hypeMeterEntity, audioSlots),
+      createHypeTierDirectionStingerListener(),
+      createSpotlightChangeHypeThresholdListener(),
     ]),
     SYSTEM_PRIORITY_DEFAULT + 1,
     'trackHype'
@@ -177,11 +189,24 @@ export function main() {
     SYSTEM_PRIORITY_DEFAULT,
     'animateWoofers'
   )
-
+/* --this is really visible with current music
   engine.addSystem(
     animateTweeters(currentAnalysis),
     SYSTEM_PRIORITY_DEFAULT,
     'animateTweeters'
+s  )
+    */
+
+  engine.addSystem(
+    managePlayerState(counterEntity),
+    SYSTEM_PRIORITY_DEFAULT,
+    'managePlayerState'
+  )
+  engine.addSystem(rotateSpotlights(), SYSTEM_PRIORITY_DEFAULT, 'rotateSpotlights')
+  engine.addSystem(
+    updateSpotlightIntensity(hypeMeterEntity),
+    SYSTEM_PRIORITY_DEFAULT,
+    'updateSpotlightIntensity'
   )
 
   if (needleEntity) {

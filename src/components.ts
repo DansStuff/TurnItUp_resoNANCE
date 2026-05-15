@@ -11,6 +11,10 @@ export const Spotlight = engine.defineComponent('Spotlight', {
     lightEntity: Schemas.Entity
 })
 
+export const PlayerInitialized = engine.defineComponent('PlayerInitialized', {
+    
+})
+
 export const VisualAmplitude = engine.defineComponent('amplitude', {})
 
 export const VisualBar = engine.defineComponent('bar', { index: Schemas.Number })
