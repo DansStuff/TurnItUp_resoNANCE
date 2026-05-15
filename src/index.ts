@@ -7,6 +7,7 @@ import {
   Transform,
   AudioAnalysisView,
   AvatarEmoteCommand,
+  AssetLoad
 } from '@dcl/sdk/ecs'
 
 import { 
@@ -55,6 +56,16 @@ const SYSTEM_PRIORITY_DEFAULT = 100_000
 
 export function main() {
   console.log("Init")
+  AssetLoad.create(engine.RootEntity, {
+    assets: [
+      "assets/scene/Audio/dcl_loop1.mp3",
+      "assets/scene/Audio/dcl_loop2.mp3",
+      "assets/scene/Audio/dcl_loop3.mp3",
+      "assets/scene/images/mask1.png",
+      "assets/scene/images/mask2.png",
+    ],
+  })
+
   const currentAnalysis: AudioAnalysisView = { amplitude: 0, bands: new Array<number>(BANDS) }
 
   const counterEntity = engine.addEntity()
