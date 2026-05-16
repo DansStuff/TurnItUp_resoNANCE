@@ -65,7 +65,7 @@
     "origin": "creator-hub",
     "projectId": "58dd9d78-9bf3-4315-a551-092235d0f1db"
   },
-  "authoritativeMultiplayer": true,
+  "authoritativeMultiplayer": false,
   "worldConfiguration": {
     "name": "danl.dcl.eth"
   }

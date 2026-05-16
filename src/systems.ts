@@ -29,6 +29,13 @@ import {
 } from './components'
 
 import { Constants } from './data'
+import { isStateSyncronized } from '@dcl/sdk/network'
+
+function applyDancerCountDelta(counterEntity: Entity, delta: number) {
+  if (!isStateSyncronized()) return
+  const dancerCounter = DancerCounter.getMutable(counterEntity)
+  dancerCounter.count += delta
+}
 
 import type {
   HypeThresholdChangeContext,
@@ -170,7 +177,7 @@ export function managePlayerState(counterEntity : Entity) {
                 color: Color3.White(),
                 intensity: Constants.SpotlightIntensityMin,
                 range: 20,
-                active: true,
+                active: false,
                 //shadowMaskTexture: Material.Texture.Common({ src: 'assets/scene/images/mask1.png' })
             })
             Spotlight.create(entity, { lightEntity })
@@ -188,11 +195,12 @@ export function managePlayerState(counterEntity : Entity) {
                 // TODO: react to emote (e.g. change spotlight color, intensity, etc.)
 
                 if (emote.loop && Spotlight.has(entity)) {
-                    //LightSource.getMutable(Spotlight.get(entity).lightEntity).active = true
-                    const lightTransform = Transform.getMutable(Spotlight.get(entity).lightEntity)
+                    const lightEntity = Spotlight.get(entity).lightEntity
+                    const lightTransform = Transform.getMutable(lightEntity)
+                    const lightComponent = LightSource.getMutable(lightEntity)
                     const playerTransform = Transform.get(entity)
                     lightTransform.position = Vector3.create(playerTransform.position.x, 5, playerTransform.position.z)
-               
+                    lightComponent.active = true
 
                 }
 
@@ -206,9 +214,8 @@ export function managePlayerState(counterEntity : Entity) {
                             emoteUrn: emote.emoteUrn,
                             timestamp: emote.timestamp
                         })
-                        if(engine.PlayerEntity === entity){
-                            const dancerCounter = DancerCounter.getMutable(counterEntity)
-                            dancerCounter.count += 1
+                        if (engine.PlayerEntity === entity) {
+                            applyDancerCountDelta(counterEntity, 1)
                         }
                         const pos = Transform.get(entity).position
                         lastPlayerPositions.set(entity, Vector3.create(pos.x, pos.y, pos.z))
@@ -273,31 +280,15 @@ export function rotateSpotlights() {
 const lastPlayerPositions = new Map<Entity, Vector3>()
 const MOVE_THRESHOLD = 0.01
 
+export function debugDancerCounter(dancerCounterEntity: Entity) {
+    return () => {
+        const dancerCounter = DancerCounter.get(dancerCounterEntity)
+        console.log('DancerCounter:', dancerCounter.count)
+    }
+}
+
 export function cancelEmotes(dancerCounterEntity : Entity){
     return () => {
-        /*
-        if (Emoting.has(engine.PlayerEntity)) {
-            const jumped  = inputSystem.isPressed(InputAction.IA_JUMP)
-            const moved =
-                
-                inputSystem.isPressed(InputAction.IA_FORWARD) ||
-                inputSystem.isPressed(InputAction.IA_BACKWARD) ||
-                inputSystem.isPressed(InputAction.IA_LEFT) ||
-                inputSystem.isPressed(InputAction.IA_RIGHT)
-
-            if (moved || jumped) {
-                const dancerCounter = DancerCounter.getMutable(dancerCounterEntity)
-                console.log('Local player moved/jumped, removing Emoting component')
-                Emoting.deleteFrom(engine.PlayerEntity)
-                dancerCounter.count -= 1
-                
-                if (Spotlight.has(engine.PlayerEntity)) {
-                    LightSource.getMutable(Spotlight.get(engine.PlayerEntity).lightEntity).active = false
-                }
-                
-            }
-        }
-        */
 
         for (const [entity] of engine.getEntitiesWith(PlayerIdentityData)) {
 
@@ -312,9 +303,12 @@ export function cancelEmotes(dancerCounterEntity : Entity){
                 if (dist > MOVE_THRESHOLD * MOVE_THRESHOLD) {
                     console.log('Remote player', entity, 'moved, removing Emoting component')
                     Emoting.deleteFrom(entity)
-                    if(entity === engine.PlayerEntity){
-                        const dancerCounter = DancerCounter.getMutable(dancerCounterEntity)
-                        dancerCounter.count -= 1
+                    if (Spotlight.has(entity)) {
+                        const { lightEntity } = Spotlight.get(entity)
+                        LightSource.getMutable(lightEntity).active = false
+                    }
+                    if (entity === engine.PlayerEntity) {
+                        applyDancerCountDelta(dancerCounterEntity, -1)
                     }
                 }
                 

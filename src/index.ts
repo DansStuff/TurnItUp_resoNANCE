@@ -11,7 +11,8 @@ import {
 } from '@dcl/sdk/ecs'
 
 import { 
-  syncEntity 
+  syncEntity,
+  isStateSyncronized 
 } from '@dcl/sdk/network'
 
 import { 
@@ -30,6 +31,7 @@ import {
 import {
   animateVisualizer,
   cancelEmotes,
+  debugDancerCounter,
   animateNeedle,
   trackHype,
   AudioSlot,
@@ -66,13 +68,18 @@ export function main() {
     ],
   })
 
+  
+
   const currentAnalysis: AudioAnalysisView = { amplitude: 0, bands: new Array<number>(BANDS) }
 
   const counterEntity = engine.addEntity()
   DancerCounter.create(counterEntity, {
     count: 0
   })
-  syncEntity(counterEntity, [DancerCounter.componentId], 1) //using a sync id of 0 because no other entities in this scene need to be synced
+  Transform.create(counterEntity, {
+    position: Vector3.create(0,0,0)
+  })
+  syncEntity(counterEntity, [DancerCounter.componentId], 1)
   
   const hypeMeterEntity = engine.addEntity()
 
@@ -148,36 +155,11 @@ export function main() {
     Tweeter.create(tweeterEntity, {})
   }
 
-  /*
-  // Listen for local-player emote commands and log looped ones.
-  AvatarEmoteCommand.onChange(engine.PlayerEntity, (emoteCommand) => {
-    if (!emoteCommand) {
-      return
-    }
-
-    if (!emoteCommand.loop) return
-    
-    if (Emoting.has(engine.PlayerEntity)) {
-      //console.log(`[Emote] Local player updated looped emote: ${emoteCommand.emoteUrn}`)
-      const mutable = Emoting.getMutable(engine.PlayerEntity)
-      mutable.emoteUrn = emoteCommand.emoteUrn
-      mutable.timestamp = emoteCommand.timestamp
-    } else {
-      //console.log(`[Emote] Local player started looped emote: ${emoteCommand.emoteUrn}`)
-      Emoting.create(engine.PlayerEntity, {
-        emoteUrn: emoteCommand.emoteUrn,
-        timestamp: emoteCommand.timestamp
-      })
-      const dancerCounter = DancerCounter.getMutable(counterEntity)
-      dancerCounter.count += 1
-      //console.log("DancerCounter: ", dancerCounter.count)
-    }
-  })
-  */
-  
+  console.log("sync?: ", isStateSyncronized())
 
   //there is no way to listen for emote stopping or cancelation so need to poll for it, this likely misses a bunch of corner cases
   engine.addSystem(cancelEmotes(counterEntity))
+  engine.addSystem(debugDancerCounter(counterEntity), SYSTEM_PRIORITY_DEFAULT, 'debugDancerCounter')
 
   // `readIntoView` before bars: @dcl/ecs runs higher numeric priority first (`b.priority - a.priority`).
   engine.addSystem(
