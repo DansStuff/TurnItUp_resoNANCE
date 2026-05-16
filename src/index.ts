@@ -72,7 +72,7 @@ export function main() {
   DancerCounter.create(counterEntity, {
     count: 0
   })
-  syncEntity(counterEntity, [DancerCounter.componentId], 0) //using a sync id of 0 because no other entities in this scene need to be synced
+  syncEntity(counterEntity, [DancerCounter.componentId], 1) //using a sync id of 0 because no other entities in this scene need to be synced
   
   const hypeMeterEntity = engine.addEntity()
 
