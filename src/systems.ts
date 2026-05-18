@@ -34,6 +34,9 @@ import { isStateSyncronized } from '@dcl/sdk/network'
 function applyDancerCountDelta(counterEntity: Entity, delta: number) {
   if (!isStateSyncronized()) return
   const dancerCounter = DancerCounter.getMutable(counterEntity)
+  if((dancerCounter.count + delta) < 0){
+    return
+  }
   dancerCounter.count += delta
 }
 
@@ -125,7 +128,8 @@ export function trackHype(
 
         //modify current hype level based on current number of dancers
         var hypeAccel = dancerCounter.count * Constants.HypeAccelPerDancer
-        var maxHype = dancerCounter.count * 1
+        var maxHype = dancerCounter.count * Constants.MaxHypePerDancer
+        //console.log(dancerCounter.count)
         if(maxHype > 1){
             maxHype = 1
         }
