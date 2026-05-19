@@ -32,7 +32,6 @@ import {
 import {
   animateVisualizer,
   cancelEmotes,
-  debugDancerCounter,
   animateNeedle,
   trackHype,
   AudioSlot,
@@ -160,7 +159,6 @@ export function main() {
 
   //there is no way to listen for emote stopping or cancelation so need to poll for it, this likely misses a bunch of corner cases
   engine.addSystem(cancelEmotes(counterEntity))
-  engine.addSystem(debugDancerCounter(counterEntity), SYSTEM_PRIORITY_DEFAULT, 'debugDancerCounter')
 
   // `readIntoView` before bars: @dcl/ecs runs higher numeric priority first (`b.priority - a.priority`).
   engine.addSystem(

@@ -289,13 +289,6 @@ export function rotateSpotlights() {
 const lastPlayerPositions = new Map<Entity, Vector3>()
 const MOVE_THRESHOLD = 0.01
 
-export function debugDancerCounter(dancerCounterEntity: Entity) {
-    return () => {
-        const dancerCounter = DancerCounter.get(dancerCounterEntity)
-        console.log('DancerCounter:', dancerCounter.count)
-    }
-}
-
 export function cancelEmotes(dancerCounterEntity : Entity){
     return () => {
 
