@@ -35,7 +35,4 @@ export enum EntityNames {
   Tweeter_glb_2 = "Tweeter.glb_2",
   Woofer_glb = "Woofer.glb",
   Woofer_glb_2 = "Woofer.glb_2",
-  confetti = "confetti",
-  confetti_2 = "confetti_2",
-  confetti_3 = "confetti_3",
 } 
