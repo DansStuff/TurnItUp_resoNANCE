@@ -723,49 +723,6 @@
       }
     },
     {
-      "name": "core-schema::Network-Entity",
-      "jsonSchema": {
-        "type": "object",
-        "properties": {
-          "networkId": {
-            "type": "integer",
-            "serializationType": "int64"
-          },
-          "entityId": {
-            "type": "integer",
-            "serializationType": "entity"
-          }
-        },
-        "serializationType": "map"
-      },
-      "data": {
-        "516": {
-          "json": {
-            "networkId": 0,
-            "entityId": 8002
-          }
-        },
-        "517": {
-          "json": {
-            "networkId": 0,
-            "entityId": 8003
-          }
-        },
-        "518": {
-          "json": {
-            "networkId": 0,
-            "entityId": 8004
-          }
-        },
-        "524": {
-          "json": {
-            "networkId": 0,
-            "entityId": 8005
-          }
-        }
-      }
-    },
-    {
       "name": "core::Animator",
       "jsonSchema": {
         "type": "object",
@@ -1240,45 +1197,6 @@
       }
     },
     {
-      "name": "core-schema::Sync-Components",
-      "jsonSchema": {
-        "type": "object",
-        "properties": {
-          "componentIds": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "serializationType": "int64"
-            },
-            "serializationType": "array"
-          }
-        },
-        "serializationType": "map"
-      },
-      "data": {
-        "516": {
-          "json": {
-            "componentIds": []
-          }
-        },
-        "517": {
-          "json": {
-            "componentIds": []
-          }
-        },
-        "518": {
-          "json": {
-            "componentIds": []
-          }
-        },
-        "524": {
-          "json": {
-            "componentIds": []
-          }
-        }
-      }
-    },
-    {
       "name": "core::VisibilityComponent",
       "jsonSchema": {
         "type": "object",
@@ -1411,7 +1329,7 @@
         "serializationType": "map"
       },
       "data": {
-        "527": {
+        "0": {
           "json": {
             "gizmo": 0
           }
@@ -2562,14 +2480,9 @@
               "social"
             ],
             "author": "DanL",
-            "tags": [
-              ""
-            ],
+            "email": "",
+            "tags": [],
             "layout": {
-              "base": {
-                "x": 0,
-                "y": 0
-              },
               "parcels": [
                 {
                   "x": 0,
@@ -2587,8 +2500,14 @@
                   "x": 1,
                   "y": 0
                 }
-              ]
+              ],
+              "base": {
+                "x": 0,
+                "y": 0
+              }
             },
+            "silenceVoiceChat": false,
+            "disablePortableExperiences": false,
             "spawnPoints": [
               {
                 "name": "SpawnArea1",
@@ -2602,14 +2521,17 @@
                     ]
                   },
                   "y": {
-                    "$case": "single",
-                    "value": 1.5
+                    "$case": "range",
+                    "value": [
+                      1.5,
+                      1.5
+                    ]
                   },
                   "z": {
                     "$case": "range",
                     "value": [
-                      9.59000015258789,
-                      12.59000015258789
+                      3.8399999141693115,
+                      6.840000152587891
                     ]
                   }
                 },
@@ -2622,7 +2544,9 @@
             ],
             "skyboxConfig": {
               "fixedTime": 80880
-            }
+            },
+            "creator": "",
+            "disableNearbyVoiceChat": false
           }
         }
       }

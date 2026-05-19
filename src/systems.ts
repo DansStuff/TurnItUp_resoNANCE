@@ -32,7 +32,10 @@ import { Constants } from './data'
 import { isStateSyncronized } from '@dcl/sdk/network'
 
 function applyDancerCountDelta(counterEntity: Entity, delta: number) {
-  if (!isStateSyncronized()) return
+  if (!isStateSyncronized()){
+    console.error("player are desynced, not allowed to dance")
+    return
+  } 
   const dancerCounter = DancerCounter.getMutable(counterEntity)
   if((dancerCounter.count + delta) < 0){
     return
