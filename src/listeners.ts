@@ -1,3 +1,4 @@
+import { getActionEvents } from '@dcl/asset-packs/dist/events'
 import { AudioSource, Entity, engine, LightSource, Material } from '@dcl/sdk/ecs'
 import { Color3 } from '@dcl/sdk/math'
 
@@ -97,6 +98,19 @@ function randomColor() {
   const hue = Math.random()
   const lightness = 0.35 + Math.random() * 0.3
   return colorFromHsl(hue, 1, lightness)
+}
+
+/** On hype threshold reaching 3: fires every scene firecracker smart item (`Shoot` action). */
+export function createFireworksHypeThresholdListener(): HypeThresholdChangeListener {
+  return ({ currentThreshold }) => {
+    
+    if (currentThreshold == 3){ 
+
+      for (const entity of engine.getEntitiesByTag('Firecracker')) {
+        getActionEvents(entity).emit('Shoot', {})
+      }
+    }
+  }
 }
 
 /** On hype threshold change: randomizes color for each player spotlight (`Spotlight` → `lightEntity`). */

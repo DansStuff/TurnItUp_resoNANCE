@@ -127,7 +127,11 @@ export function trackHype(
         hypeMeter.lastThreshold = hypeMeter.currentThreshold
 
         //modify current hype level based on current number of dancers
-        var hypeAccel = dancerCounter.count * Constants.HypeAccelPerDancer
+        var hypeAccel = /*dancerCounter.count **/ 0
+        if(dancerCounter.count > 0){
+            hypeAccel = Constants.HypeAccelPerDancer
+        }
+        
         var maxHype = dancerCounter.count * Constants.MaxHypePerDancer
         //console.log(dancerCounter.count)
         if(maxHype > 1){

@@ -27,6 +27,7 @@ import {
   createSongChangeHypeThresholdListener,
   createHypeTierDirectionStingerListener,
   createSpotlightChangeHypeThresholdListener,
+  createFireworksHypeThresholdListener,
 } from './listeners'
 import {
   animateVisualizer,
@@ -168,6 +169,7 @@ export function main() {
       createSongChangeHypeThresholdListener(hypeMeterEntity, audioSlots),
       createHypeTierDirectionStingerListener(),
       createSpotlightChangeHypeThresholdListener(),
+      createFireworksHypeThresholdListener(),
     ]),
     SYSTEM_PRIORITY_DEFAULT + 1,
     'trackHype'

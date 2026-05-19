@@ -153,6 +153,69 @@
             "parent": 0
           }
         },
+        "516": {
+          "json": {
+            "position": {
+              "x": 28,
+              "y": 0,
+              "z": 30.5
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "517": {
+          "json": {
+            "position": {
+              "x": 20,
+              "y": 0,
+              "z": 30.5
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
+        "518": {
+          "json": {
+            "position": {
+              "x": 12,
+              "y": 0,
+              "z": 30.5
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            },
+            "parent": 0
+          }
+        },
         "519": {
           "json": {
             "position": {
@@ -254,6 +317,27 @@
               "y": 0.998966634273529,
               "z": 0,
               "w": 0.04545016586780548
+            },
+            "parent": 0
+          }
+        },
+        "524": {
+          "json": {
+            "position": {
+              "x": 4,
+              "y": 0,
+              "z": 30.5
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "w": 1
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
             },
             "parent": 0
           }
@@ -639,6 +723,49 @@
       }
     },
     {
+      "name": "core-schema::Network-Entity",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "networkId": {
+            "type": "integer",
+            "serializationType": "int64"
+          },
+          "entityId": {
+            "type": "integer",
+            "serializationType": "entity"
+          }
+        },
+        "serializationType": "map"
+      },
+      "data": {
+        "516": {
+          "json": {
+            "networkId": 0,
+            "entityId": 8002
+          }
+        },
+        "517": {
+          "json": {
+            "networkId": 0,
+            "entityId": 8003
+          }
+        },
+        "518": {
+          "json": {
+            "networkId": 0,
+            "entityId": 8004
+          }
+        },
+        "524": {
+          "json": {
+            "networkId": 0,
+            "entityId": 8005
+          }
+        }
+      }
+    },
+    {
       "name": "core::Animator",
       "jsonSchema": {
         "type": "object",
@@ -647,6 +774,48 @@
         "protocolBuffer": "PBAnimator"
       },
       "data": {
+        "516": {
+          "json": {
+            "states": [
+              {
+                "clip": "Play",
+                "playing": false,
+                "weight": 1,
+                "speed": 1,
+                "loop": false,
+                "shouldReset": false
+              }
+            ]
+          }
+        },
+        "517": {
+          "json": {
+            "states": [
+              {
+                "clip": "Play",
+                "playing": false,
+                "weight": 1,
+                "speed": 1,
+                "loop": false,
+                "shouldReset": false
+              }
+            ]
+          }
+        },
+        "518": {
+          "json": {
+            "states": [
+              {
+                "clip": "Play",
+                "playing": false,
+                "weight": 1,
+                "speed": 1,
+                "loop": false,
+                "shouldReset": false
+              }
+            ]
+          }
+        },
         "523": {
           "json": {
             "states": [
@@ -656,6 +825,20 @@
                 "weight": 1,
                 "speed": 1,
                 "loop": true,
+                "shouldReset": false
+              }
+            ]
+          }
+        },
+        "524": {
+          "json": {
+            "states": [
+              {
+                "clip": "Play",
+                "playing": false,
+                "weight": 1,
+                "speed": 1,
+                "loop": false,
                 "shouldReset": false
               }
             ]
@@ -700,6 +883,27 @@
             "invisibleMeshesCollisionMask": 3
           }
         },
+        "516": {
+          "json": {
+            "src": "assets/asset-packs/fireworks/firework_02.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 0
+          }
+        },
+        "517": {
+          "json": {
+            "src": "assets/asset-packs/fireworks/firework_02.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 0
+          }
+        },
+        "518": {
+          "json": {
+            "src": "assets/asset-packs/fireworks/firework_02.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 0
+          }
+        },
         "519": {
           "json": {
             "src": "assets/scene/Models/Speaker.glb",
@@ -733,6 +937,13 @@
             "src": "assets/scene/Models/Pidgeon_01.glb",
             "visibleMeshesCollisionMask": 0,
             "invisibleMeshesCollisionMask": 3
+          }
+        },
+        "524": {
+          "json": {
+            "src": "assets/asset-packs/fireworks/firework_02.glb",
+            "visibleMeshesCollisionMask": 0,
+            "invisibleMeshesCollisionMask": 0
           }
         },
         "527": {
@@ -891,6 +1102,21 @@
             "value": "Tweeter.glb"
           }
         },
+        "516": {
+          "json": {
+            "value": "Fireworks"
+          }
+        },
+        "517": {
+          "json": {
+            "value": "Fireworks_2"
+          }
+        },
+        "518": {
+          "json": {
+            "value": "Fireworks_3"
+          }
+        },
         "519": {
           "json": {
             "value": "Speaker.glb"
@@ -914,6 +1140,11 @@
         "523": {
           "json": {
             "value": "Pidgeon_01.glb"
+          }
+        },
+        "524": {
+          "json": {
+            "value": "Fireworks_4"
           }
         },
         "527": {
@@ -1009,6 +1240,76 @@
       }
     },
     {
+      "name": "core-schema::Sync-Components",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "componentIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "serializationType": "int64"
+            },
+            "serializationType": "array"
+          }
+        },
+        "serializationType": "map"
+      },
+      "data": {
+        "516": {
+          "json": {
+            "componentIds": []
+          }
+        },
+        "517": {
+          "json": {
+            "componentIds": []
+          }
+        },
+        "518": {
+          "json": {
+            "componentIds": []
+          }
+        },
+        "524": {
+          "json": {
+            "componentIds": []
+          }
+        }
+      }
+    },
+    {
+      "name": "core::VisibilityComponent",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "serializationType": "protocol-buffer",
+        "protocolBuffer": "PBVisibilityComponent"
+      },
+      "data": {
+        "516": {
+          "json": {
+            "visible": false
+          }
+        },
+        "517": {
+          "json": {
+            "visible": false
+          }
+        },
+        "518": {
+          "json": {
+            "visible": false
+          }
+        },
+        "524": {
+          "json": {
+            "visible": false
+          }
+        }
+      }
+    },
+    {
       "name": "core-schema::Tags",
       "jsonSchema": {
         "type": "object",
@@ -1033,7 +1334,9 @@
               "Tag Group 4",
               "DancerTracker",
               "Woofer",
-              "Tweeter"
+              "Tweeter",
+              "Firecracker",
+              "Confetti"
             ]
           }
         },
@@ -1051,6 +1354,27 @@
             ]
           }
         },
+        "516": {
+          "json": {
+            "tags": [
+              "Firecracker"
+            ]
+          }
+        },
+        "517": {
+          "json": {
+            "tags": [
+              "Firecracker"
+            ]
+          }
+        },
+        "518": {
+          "json": {
+            "tags": [
+              "Firecracker"
+            ]
+          }
+        },
         "520": {
           "json": {
             "tags": [
@@ -1062,6 +1386,13 @@
           "json": {
             "tags": [
               "Tweeter"
+            ]
+          }
+        },
+        "524": {
+          "json": {
+            "tags": [
+              "Firecracker"
             ]
           }
         }
@@ -1080,9 +1411,9 @@
         "serializationType": "map"
       },
       "data": {
-        "0": {
+        "517": {
           "json": {
-            "gizmo": 0
+            "gizmo": 1
           }
         }
       }
@@ -1158,7 +1489,11 @@
                   520,
                   521,
                   522,
-                  523
+                  523,
+                  516,
+                  524,
+                  518,
+                  517
                 ]
               },
               {
@@ -1272,6 +1607,22 @@
               {
                 "entity": 523,
                 "children": []
+              },
+              {
+                "entity": 516,
+                "children": []
+              },
+              {
+                "entity": 517,
+                "children": []
+              },
+              {
+                "entity": 518,
+                "children": []
+              },
+              {
+                "entity": 524,
+                "children": []
               }
             ]
           }
@@ -1304,6 +1655,15 @@
         "515": {
           "json": {}
         },
+        "516": {
+          "json": {}
+        },
+        "517": {
+          "json": {}
+        },
+        "518": {
+          "json": {}
+        },
         "519": {
           "json": {}
         },
@@ -1320,6 +1680,9 @@
           "json": {
             "porportionalScaling": true
           }
+        },
+        "524": {
+          "json": {}
         },
         "527": {
           "json": {}
@@ -1374,6 +1737,485 @@
         },
         "547": {
           "json": {}
+        }
+      }
+    },
+    {
+      "name": "inspector::Config",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "isBasicViewEnabled": {
+            "type": "boolean",
+            "serializationType": "boolean"
+          },
+          "componentName": {
+            "type": "string",
+            "serializationType": "utf8-string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "type": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "layout": {
+                  "type": "string",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "string",
+                    "serializationType": "utf8-string"
+                  }
+                },
+                "basicViewId": {
+                  "type": "string",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "string",
+                    "serializationType": "utf8-string"
+                  }
+                }
+              },
+              "serializationType": "map"
+            },
+            "serializationType": "array"
+          },
+          "assetId": {
+            "type": "string",
+            "serializationType": "optional",
+            "optionalJsonSchema": {
+              "type": "string",
+              "serializationType": "utf8-string"
+            }
+          },
+          "label": {
+            "type": "string",
+            "serializationType": "optional",
+            "optionalJsonSchema": {
+              "type": "string",
+              "serializationType": "utf8-string"
+            }
+          },
+          "sections": {
+            "type": "array",
+            "serializationType": "optional",
+            "optionalJsonSchema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "serializationType": "utf8-string"
+                  },
+                  "label": {
+                    "type": "string",
+                    "serializationType": "optional",
+                    "optionalJsonSchema": {
+                      "type": "string",
+                      "serializationType": "utf8-string"
+                    }
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "component": {
+                          "type": "string",
+                          "serializationType": "utf8-string"
+                        },
+                        "widget": {
+                          "type": "string",
+                          "serializationType": "utf8-string"
+                        },
+                        "label": {
+                          "type": "string",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "string",
+                            "serializationType": "utf8-string"
+                          }
+                        },
+                        "type": {
+                          "type": "string",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "string",
+                            "serializationType": "utf8-string"
+                          }
+                        },
+                        "path": {
+                          "type": "string",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "string",
+                            "serializationType": "utf8-string"
+                          }
+                        },
+                        "basicViewId": {
+                          "type": "string",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "string",
+                            "serializationType": "utf8-string"
+                          }
+                        },
+                        "props": {
+                          "type": "object",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "object",
+                            "properties": {
+                              "basic": {
+                                "type": "boolean",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "boolean",
+                                  "serializationType": "boolean"
+                                }
+                              }
+                            },
+                            "serializationType": "map"
+                          }
+                        },
+                        "constraints": {
+                          "type": "object",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "object",
+                            "properties": {
+                              "min": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "max": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "minExclusive": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "maxExclusive": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "step": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "multipleOf": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "minLength": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "maxLength": {
+                                "type": "number",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "number",
+                                  "serializationType": "float32"
+                                }
+                              },
+                              "pattern": {
+                                "type": "string",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "string",
+                                  "serializationType": "utf8-string"
+                                }
+                              },
+                              "format": {
+                                "type": "string",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "string",
+                                  "serializationType": "utf8-string"
+                                }
+                              },
+                              "default": {
+                                "type": "string",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "string",
+                                  "serializationType": "utf8-string"
+                                }
+                              }
+                            },
+                            "serializationType": "map"
+                          }
+                        },
+                        "transform": {
+                          "type": "object",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "object",
+                            "properties": {
+                              "in": {
+                                "type": "object",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "steps": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "op": {
+                                            "type": "string",
+                                            "serializationType": "utf8-string"
+                                          },
+                                          "onError": {
+                                            "type": "string",
+                                            "serializationType": "optional",
+                                            "optionalJsonSchema": {
+                                              "type": "string",
+                                              "enum": [
+                                                "fail",
+                                                "skip",
+                                                "noop"
+                                              ],
+                                              "default": "noop",
+                                              "serializationType": "enum-string",
+                                              "enumObject": {
+                                                "FAIL": "fail",
+                                                "SKIP": "skip",
+                                                "NOOP": "noop"
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "serializationType": "map"
+                                      },
+                                      "serializationType": "array"
+                                    }
+                                  },
+                                  "serializationType": "map"
+                                }
+                              },
+                              "out": {
+                                "type": "object",
+                                "serializationType": "optional",
+                                "optionalJsonSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "steps": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "op": {
+                                            "type": "string",
+                                            "serializationType": "utf8-string"
+                                          },
+                                          "onError": {
+                                            "type": "string",
+                                            "serializationType": "optional",
+                                            "optionalJsonSchema": {
+                                              "type": "string",
+                                              "enum": [
+                                                "fail",
+                                                "skip",
+                                                "noop"
+                                              ],
+                                              "default": "noop",
+                                              "serializationType": "enum-string",
+                                              "enumObject": {
+                                                "FAIL": "fail",
+                                                "SKIP": "skip",
+                                                "NOOP": "noop"
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "serializationType": "map"
+                                      },
+                                      "serializationType": "array"
+                                    }
+                                  },
+                                  "serializationType": "map"
+                                }
+                              }
+                            },
+                            "serializationType": "map"
+                          }
+                        },
+                        "dataSource": {
+                          "type": "object",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "object",
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "serializationType": "utf8-string"
+                              }
+                            },
+                            "serializationType": "map"
+                          }
+                        }
+                      },
+                      "serializationType": "map"
+                    },
+                    "serializationType": "array"
+                  },
+                  "columns": {
+                    "type": "number",
+                    "serializationType": "optional",
+                    "optionalJsonSchema": {
+                      "type": "number",
+                      "serializationType": "float32"
+                    }
+                  },
+                  "helpTooltip": {
+                    "type": "object",
+                    "serializationType": "optional",
+                    "optionalJsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "serializationType": "utf8-string"
+                        },
+                        "link": {
+                          "type": "string",
+                          "serializationType": "optional",
+                          "optionalJsonSchema": {
+                            "type": "string",
+                            "serializationType": "utf8-string"
+                          }
+                        }
+                      },
+                      "serializationType": "map"
+                    }
+                  }
+                },
+                "serializationType": "map"
+              },
+              "serializationType": "array"
+            }
+          },
+          "helpTooltip": {
+            "type": "object",
+            "serializationType": "optional",
+            "optionalJsonSchema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "link": {
+                  "type": "string",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "string",
+                    "serializationType": "utf8-string"
+                  }
+                }
+              },
+              "serializationType": "map"
+            }
+          },
+          "version": {
+            "type": "number",
+            "serializationType": "optional",
+            "optionalJsonSchema": {
+              "type": "number",
+              "serializationType": "float32"
+            }
+          }
+        },
+        "serializationType": "map"
+      },
+      "data": {
+        "516": {
+          "json": {
+            "isBasicViewEnabled": true,
+            "componentName": "Firework",
+            "fields": [],
+            "assetId": "5965c294-3fa3-454e-b974-b40ecb5d529a",
+            "helpTooltip": {
+              "text": "A firework that shoots up into the air and explodes. It is invisible until activated. Trigger it from another smart item."
+            },
+            "version": 1
+          }
+        },
+        "517": {
+          "json": {
+            "isBasicViewEnabled": true,
+            "componentName": "Firework",
+            "fields": [],
+            "assetId": "5965c294-3fa3-454e-b974-b40ecb5d529a",
+            "helpTooltip": {
+              "text": "A firework that shoots up into the air and explodes. It is invisible until activated. Trigger it from another smart item."
+            },
+            "version": 1
+          }
+        },
+        "518": {
+          "json": {
+            "isBasicViewEnabled": true,
+            "componentName": "Firework",
+            "fields": [],
+            "assetId": "5965c294-3fa3-454e-b974-b40ecb5d529a",
+            "helpTooltip": {
+              "text": "A firework that shoots up into the air and explodes. It is invisible until activated. Trigger it from another smart item."
+            },
+            "version": 1
+          }
+        },
+        "524": {
+          "json": {
+            "isBasicViewEnabled": true,
+            "componentName": "Firework",
+            "fields": [],
+            "assetId": "5965c294-3fa3-454e-b974-b40ecb5d529a",
+            "helpTooltip": {
+              "text": "A firework that shoots up into the air and explodes. It is invisible until activated. Trigger it from another smart item."
+            },
+            "version": 1
+          }
         }
       }
     },
@@ -2071,6 +2913,259 @@
       }
     },
     {
+      "name": "asset-packs::Actions",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "serializationType": "int32"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "type": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "jsonPayload": {
+                  "type": "string",
+                  "serializationType": "utf8-string"
+                },
+                "allowedInBasicView": {
+                  "type": "boolean",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "boolean",
+                    "serializationType": "boolean"
+                  }
+                },
+                "basicViewId": {
+                  "type": "string",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "string",
+                    "serializationType": "utf8-string"
+                  }
+                },
+                "default": {
+                  "type": "boolean",
+                  "serializationType": "optional",
+                  "optionalJsonSchema": {
+                    "type": "boolean",
+                    "serializationType": "boolean"
+                  }
+                }
+              },
+              "serializationType": "map"
+            },
+            "serializationType": "array"
+          }
+        },
+        "serializationType": "map"
+      },
+      "data": {
+        "516": {
+          "json": {
+            "id": 4,
+            "value": [
+              {
+                "name": "Shoot",
+                "type": "batch",
+                "jsonPayload": "{\"actions\":[\"Launch Sound\",\"Play Animation\",\"Delayed Explode sound\",\"Visible\",\"Delay Invisible\"]}",
+                "allowedInBasicView": true
+              },
+              {
+                "name": "Launch Sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworklaunch.mp3\"}"
+              },
+              {
+                "name": "Play Animation",
+                "type": "play_animation",
+                "jsonPayload": "{\"animation\":\"Play\"}"
+              },
+              {
+                "name": "Explode sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworkexplode.mp3\"}"
+              },
+              {
+                "name": "Delayed Explode sound",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Explode sound\"],\"timeout\":1.3}"
+              },
+              {
+                "name": "Visible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":true,\"collider\":0}"
+              },
+              {
+                "name": "Invisible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":false,\"collider\":0}"
+              },
+              {
+                "name": "Delay Invisible",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Invisible\"],\"timeout\":5}"
+              }
+            ]
+          }
+        },
+        "517": {
+          "json": {
+            "id": 5,
+            "value": [
+              {
+                "name": "Shoot",
+                "type": "batch",
+                "jsonPayload": "{\"actions\":[\"Launch Sound\",\"Play Animation\",\"Delayed Explode sound\",\"Visible\",\"Delay Invisible\"]}",
+                "allowedInBasicView": true
+              },
+              {
+                "name": "Launch Sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworklaunch.mp3\"}"
+              },
+              {
+                "name": "Play Animation",
+                "type": "play_animation",
+                "jsonPayload": "{\"animation\":\"Play\"}"
+              },
+              {
+                "name": "Explode sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworkexplode.mp3\"}"
+              },
+              {
+                "name": "Delayed Explode sound",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Explode sound\"],\"timeout\":1.3}"
+              },
+              {
+                "name": "Visible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":true,\"collider\":0}"
+              },
+              {
+                "name": "Invisible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":false,\"collider\":0}"
+              },
+              {
+                "name": "Delay Invisible",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Invisible\"],\"timeout\":5}"
+              }
+            ]
+          }
+        },
+        "518": {
+          "json": {
+            "id": 6,
+            "value": [
+              {
+                "name": "Shoot",
+                "type": "batch",
+                "jsonPayload": "{\"actions\":[\"Launch Sound\",\"Play Animation\",\"Delayed Explode sound\",\"Visible\",\"Delay Invisible\"]}",
+                "allowedInBasicView": true
+              },
+              {
+                "name": "Launch Sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworklaunch.mp3\"}"
+              },
+              {
+                "name": "Play Animation",
+                "type": "play_animation",
+                "jsonPayload": "{\"animation\":\"Play\"}"
+              },
+              {
+                "name": "Explode sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworkexplode.mp3\"}"
+              },
+              {
+                "name": "Delayed Explode sound",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Explode sound\"],\"timeout\":1.3}"
+              },
+              {
+                "name": "Visible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":true,\"collider\":0}"
+              },
+              {
+                "name": "Invisible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":false,\"collider\":0}"
+              },
+              {
+                "name": "Delay Invisible",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Invisible\"],\"timeout\":5}"
+              }
+            ]
+          }
+        },
+        "524": {
+          "json": {
+            "id": 7,
+            "value": [
+              {
+                "name": "Shoot",
+                "type": "batch",
+                "jsonPayload": "{\"actions\":[\"Launch Sound\",\"Play Animation\",\"Delayed Explode sound\",\"Visible\",\"Delay Invisible\"]}",
+                "allowedInBasicView": true
+              },
+              {
+                "name": "Launch Sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworklaunch.mp3\"}"
+              },
+              {
+                "name": "Play Animation",
+                "type": "play_animation",
+                "jsonPayload": "{\"animation\":\"Play\"}"
+              },
+              {
+                "name": "Explode sound",
+                "type": "play_sound",
+                "jsonPayload": "{\"src\":\"assets/asset-packs/fireworks/fireworkexplode.mp3\"}"
+              },
+              {
+                "name": "Delayed Explode sound",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Explode sound\"],\"timeout\":1.3}"
+              },
+              {
+                "name": "Visible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":true,\"collider\":0}"
+              },
+              {
+                "name": "Invisible",
+                "type": "set_visibility",
+                "jsonPayload": "{\"visible\":false,\"collider\":0}"
+              },
+              {
+                "name": "Delay Invisible",
+                "type": "start_delay",
+                "jsonPayload": "{\"actions\":[\"Invisible\"],\"timeout\":5}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
       "name": "asset-packs::Counter",
       "jsonSchema": {
         "type": "object",
@@ -2090,7 +3185,7 @@
         "0": {
           "json": {
             "id": 0,
-            "value": 3
+            "value": 9
           }
         }
       }

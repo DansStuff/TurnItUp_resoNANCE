@@ -7,7 +7,7 @@ const hypeTrackClipUrls = [
 
 export const Constants = {
   HypeTrackClipUrls: hypeTrackClipUrls,
-  MaxHypePerDancer: (1.0 / hypeTrackClipUrls.length) + 0.1,
+  MaxHypePerDancer: (1.0 / hypeTrackClipUrls.length) - 0.025,
   NumTracks: hypeTrackClipUrls.length,
   HypeAccelPerDancer: 0.022,
   HypeDecay: 0.5,

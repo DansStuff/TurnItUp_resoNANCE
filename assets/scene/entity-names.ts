@@ -23,6 +23,10 @@ export enum EntityNames {
   Bar8_glb = "Bar8.glb",
   Bar8_glb_2 = "Bar8.glb_2",
   DanceFloor_glb = "DanceFloor.glb",
+  Fireworks = "Fireworks",
+  Fireworks_2 = "Fireworks_2",
+  Fireworks_3 = "Fireworks_3",
+  Fireworks_4 = "Fireworks_4",
   Needle_glb = "Needle.glb",
   Pidgeon_01_glb = "Pidgeon_01.glb",
   Speaker_glb = "Speaker.glb",
@@ -31,4 +35,7 @@ export enum EntityNames {
   Tweeter_glb_2 = "Tweeter.glb_2",
   Woofer_glb = "Woofer.glb",
   Woofer_glb_2 = "Woofer.glb_2",
+  confetti = "confetti",
+  confetti_2 = "confetti_2",
+  confetti_3 = "confetti_3",
 } 
