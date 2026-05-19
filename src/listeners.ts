@@ -74,6 +74,7 @@ export function createHypeTierDirectionStingerListener(): HypeThresholdChangeLis
 }
 
 /** HSL → RGB; hue/saturation/lightness in [0, 1]. */
+//This enables us to ensure that we only select saturated colors
 function colorFromHsl(h: number, s: number, l: number) {
   if (s === 0) return Color3.create(l, l, l)
 
@@ -92,14 +93,6 @@ function colorFromHsl(h: number, s: number, l: number) {
   return Color3.create(hueToChannel(h + 1 / 3), hueToChannel(h), hueToChannel(h - 1 / 3))
 }
 
-// function randomColor(){
-//   return Color3.create(
-//     Math.random(),
-//     Math.random(),
-//     Math.random()
-//   )
-// }
-
 function randomColor() {
   const hue = Math.random()
   const lightness = 0.35 + Math.random() * 0.3
@@ -113,13 +106,7 @@ export function createSpotlightChangeHypeThresholdListener(): HypeThresholdChang
       const { lightEntity } = Spotlight.get(playerEntity)
       if (!LightSource.has(lightEntity)) continue
       const light = LightSource.getMutable(lightEntity)
-      /*
-      LightSource.getMutable(lightEntity).color = Color3.create(
-        Math.random(),
-        Math.random(),
-        Math.random()
-      )
-        */
+      
        
        switch(currentThreshold){
         case 1:

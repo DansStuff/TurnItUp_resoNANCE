@@ -232,7 +232,7 @@ export function managePlayerState(counterEntity : Entity) {
 
         
 
-
+/*
         // Clean up disconnected players
         for (const [entity] of engine.getEntitiesWith(PlayerInitialized)) {
             if (PlayerIdentityData.has(entity)) continue
@@ -245,6 +245,7 @@ export function managePlayerState(counterEntity : Entity) {
             if (Emoting.has(entity)) Emoting.deleteFrom(entity)
             PlayerInitialized.deleteFrom(entity)
         }
+            */
     }
 }
 function spotlightIntensityFromHype(hype: number): number {

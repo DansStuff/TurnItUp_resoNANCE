@@ -9,8 +9,8 @@ export const Constants = {
   HypeTrackClipUrls: hypeTrackClipUrls,
   MaxHypePerDancer: (1.0 / hypeTrackClipUrls.length) + 0.1,
   NumTracks: hypeTrackClipUrls.length,
-  HypeAccelPerDancer: 0.08,
-  HypeDecay: 1.0,
+  HypeAccelPerDancer: 0.022,
+  HypeDecay: 0.5,
   BarsHeight: 10,
   /**
    * Muted `AudioSource` used only to occupy the first analysis slot (see `docs/DCL-AudioAnalysis-first-source-zeros.md`).
